@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WILLIAM LEE 李俊 — Digital Base / Personal Works</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#050608;
+  --bg-2:#0a0c10;
+  --fg:#f4f4f6;
+  --muted:#8a8d96;
+  --line:#1d2026;
+  --accent:#00ffd1;
+  --accent-2:#5468ff;
+  --accent-3:#ff3d71;
+  --grid:rgba(255,255,255,0.04);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--fg);
+  font-family:'Space Grotesk','Noto Sans SC',sans-serif;
+  overflow-x:hidden;
+  cursor:none;
+}
+::selection{background:var(--accent);color:#000}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+
+/* Custom cursor */
+.cursor{
+  position:fixed;width:14px;height:14px;border-radius:50%;
+  background:var(--accent);pointer-events:none;z-index:9999;
+  mix-blend-mode:difference;transition:transform .12s ease,width .2s ease,height .2s ease;
+  transform:translate(-50%,-50%);
+}
+.cursor.hover{width:48px;height:48px;background:transparent;border:1px solid var(--accent)}
+
+/* Grid background */
+.grid-bg{
+  position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:
+    linear-gradient(var(--grid) 1px,transparent 1px),
+    linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:80px 80px;
+  mask-image:radial-gradient(ellipse at center,black 30%,transparent 75%);
+}
+.noise{
+  position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.04;
+  background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence baseFrequency='.9'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+/* Nav */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:24px 48px;
+  font-family:'JetBrains Mono',monospace;font-size:12px;
+  letter-spacing:.2em;text-transform:uppercase;
+  mix-blend-mode:difference;
+}
+.nav-logo{font-weight:700;letter-spacing:.3em}
+.nav-logo span{color:var(--accent)}
+.nav-menu{display:flex;gap:36px}
+.nav-menu a{position:relative;opacity:.7;transition:opacity .3s}
+.nav-menu a:hover{opacity:1}
+.nav-menu a::before{content:"//";margin-right:6px;color:var(--accent);opacity:.6}
+
+/* HERO */
+.hero{
+  position:relative;min-height:100vh;display:flex;align-items:center;
+  padding:120px 48px 80px;overflow:hidden;
+}
+.hero::before{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 800px 600px at 80% 20%,rgba(84,104,255,.18),transparent 60%),
+    radial-gradient(ellipse 700px 500px at 10% 90%,rgba(0,255,209,.12),transparent 60%);
+  pointer-events:none;
+}
+.hero-inner{position:relative;z-index:2;width:100%;max-width:1600px;margin:0 auto}
+.hero-meta{
+  display:flex;gap:48px;align-items:center;
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  text-transform:uppercase;letter-spacing:.25em;
+  color:var(--muted);margin-bottom:48px;
+}
+.hero-meta .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);
+  box-shadow:0 0 12px var(--accent);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
+
+.hero-title{
+  font-family:'Space Grotesk',sans-serif;
+  font-weight:700;
+  font-size:clamp(64px,14vw,240px);
+  line-height:.85;letter-spacing:-.04em;
+  margin-bottom:24px;
+}
+.hero-title .line1{display:block;color:var(--muted);font-size:.18em;letter-spacing:.4em;font-weight:400;margin-bottom:24px}
+.hero-title .name{display:flex;align-items:flex-end;gap:.08em;flex-wrap:wrap}
+.hero-title .cn{
+  font-family:'Noto Sans SC',sans-serif;font-weight:900;
+  font-size:.55em;color:var(--accent);
+  writing-mode:vertical-rl;text-orientation:upright;
+  line-height:1;letter-spacing:0;margin:0 .1em .15em;
+}
+.hero-sub{
+  display:grid;grid-template-columns:1fr auto;gap:60px;align-items:end;
+  margin-top:60px;border-top:1px solid var(--line);padding-top:36px;
+}
+.hero-tagline{
+  font-size:clamp(18px,1.6vw,26px);max-width:680px;line-height:1.4;
+  font-family:'Noto Sans SC',sans-serif;font-weight:300;
+}
+.hero-tagline strong{color:var(--accent);font-weight:500}
+.hero-stats{display:flex;gap:48px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+.hero-stats .stat{display:flex;flex-direction:column;gap:6px}
+.hero-stats .num{font-size:36px;font-weight:700;color:var(--fg);font-family:'Space Grotesk',sans-serif}
+.hero-stats .label{color:var(--muted)}
+
+.scroll-indicator{
+  position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
+  font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.3em;color:var(--muted);
+  display:flex;flex-direction:column;align-items:center;gap:12px;
+}
+.scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,transparent,var(--accent));animation:scrollLine 2s infinite}
+@keyframes scrollLine{0%{height:0}50%{height:50px}100%{height:0;transform:translateY(50px)}}
+
+/* Section header */
+.section{padding:140px 48px;position:relative;z-index:2}
+.section-inner{max-width:1600px;margin:0 auto}
+.section-head{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  margin-bottom:80px;border-bottom:1px solid var(--line);padding-bottom:24px;
+  flex-wrap:wrap;gap:20px;
+}
+.section-num{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent);letter-spacing:.3em}
+.section-title{
+  font-size:clamp(42px,6vw,96px);font-weight:700;line-height:1;letter-spacing:-.03em;
+  margin-top:8px;
+}
+.section-title em{color:var(--accent);font-style:normal;font-family:'Noto Sans SC',sans-serif;font-weight:300;font-size:.5em;letter-spacing:.05em}
+.section-meta{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:.2em;text-transform:uppercase;text-align:right}
+
+/* About */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.about-quote{
+  font-family:'Noto Sans SC',sans-serif;font-size:clamp(22px,2.2vw,36px);
+  line-height:1.5;font-weight:300;
+}
+.about-quote .highlight{color:var(--accent);font-weight:500}
+.about-quote .en{
+  display:block;font-family:'Space Grotesk',sans-serif;
+  font-size:.5em;color:var(--muted);margin-top:32px;letter-spacing:.05em;
+  text-transform:uppercase;font-weight:400;
+}
+.skill-stack{display:flex;flex-direction:column;gap:24px}
+.skill-card{
+  border:1px solid var(--line);padding:32px;
+  background:linear-gradient(135deg,rgba(255,255,255,.02),transparent);
+  position:relative;overflow:hidden;transition:.4s;
+}
+.skill-card::before{
+  content:"";position:absolute;top:0;left:0;width:0;height:1px;background:var(--accent);
+  transition:.6s cubic-bezier(.2,1,.3,1);
+}
+.skill-card:hover{transform:translateX(8px);border-color:var(--accent)}
+.skill-card:hover::before{width:100%}
+.skill-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:.3em}
+.skill-title{font-size:22px;font-weight:600;margin:8px 0 12px;font-family:'Noto Sans SC',sans-serif}
+.skill-desc{color:var(--muted);font-size:14px;line-height:1.7;font-family:'Noto Sans SC',sans-serif}
+
+/* Experience timeline */
+.timeline{display:grid;grid-template-columns:auto 1fr;gap:0}
+.tl-row{
+  display:contents;
+}
+.tl-row .year{
+  font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--accent);
+  padding:32px 32px 32px 0;border-right:1px solid var(--line);
+  letter-spacing:.15em;white-space:nowrap;
+}
+.tl-row .info{
+  padding:32px 0 32px 48px;border-bottom:1px solid var(--line);position:relative;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;
+  transition:.3s;
+}
+.tl-row:first-child .info{border-top:1px solid var(--line)}
+.tl-row:hover .info{padding-left:64px;background:linear-gradient(to right,rgba(0,255,209,.04),transparent)}
+.tl-row .info::before{
+  content:"";position:absolute;left:-5px;top:50%;width:9px;height:9px;
+  background:var(--bg);border:1px solid var(--line);border-radius:50%;transform:translateY(-50%);
+  transition:.3s;
+}
+.tl-row:hover .info::before{background:var(--accent);border-color:var(--accent);box-shadow:0 0 12px var(--accent)}
+.tl-company{font-size:clamp(28px,3vw,48px);font-weight:600;letter-spacing:-.02em}
+.tl-role{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:.2em;text-transform:uppercase}
+
+/* Featured Projects - large showcase */
+.featured{display:flex;flex-direction:column;gap:140px}
+.feature-item{display:grid;grid-template-columns:1fr 1.4fr;gap:60px;align-items:center}
+.feature-item.reverse{grid-template-columns:1.4fr 1fr}
+.feature-item.reverse .feature-content{order:2}
+.feature-item.reverse .feature-visual{order:1}
+.feature-content{padding:0 0 0 0}
+.feature-num{
+  font-family:'JetBrains Mono',monospace;font-size:80px;font-weight:300;color:var(--line);
+  line-height:1;letter-spacing:-.05em;margin-bottom:24px;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  opacity:.6;
+}
+.feature-tag{
+  display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;
+  color:var(--accent);letter-spacing:.3em;text-transform:uppercase;
+  border:1px solid var(--accent);padding:6px 14px;margin-bottom:24px;
+}
+.feature-title{
+  font-size:clamp(34px,4vw,64px);font-weight:700;line-height:1.05;letter-spacing:-.03em;
+  margin-bottom:24px;font-family:'Noto Sans SC',sans-serif;
+}
+.feature-desc{
+  font-size:16px;line-height:1.8;color:var(--muted);max-width:520px;
+  font-family:'Noto Sans SC',sans-serif;
+}
+.feature-link{
+  display:inline-flex;align-items:center;gap:12px;margin-top:32px;
+  font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.25em;
+  text-transform:uppercase;border-bottom:1px solid var(--accent);padding-bottom:8px;
+  color:var(--accent);transition:.3s;
+}
+.feature-link:hover{gap:20px}
+.feature-link svg{width:14px;height:14px}
+
+.feature-visual{
+  position:relative;overflow:hidden;
+  background:#0a0c10;border:1px solid var(--line);
+  aspect-ratio:16/9;
+}
+.feature-visual::before{
+  content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(135deg,transparent 60%,rgba(0,255,209,.08));
+}
+.feature-visual::after{
+  content:"";position:absolute;top:12px;right:12px;z-index:3;
+  width:8px;height:8px;border-radius:50%;background:var(--accent-3);
+  box-shadow:0 0 10px var(--accent-3);animation:pulse 2s infinite;
+}
+.feature-visual img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform 1.2s cubic-bezier(.2,1,.3,1),filter .6s;
+  filter:brightness(.92) contrast(1.05);
+}
+.feature-item:hover .feature-visual img{transform:scale(1.04);filter:brightness(1) contrast(1.1)}
+.feature-corner{
+  position:absolute;width:24px;height:24px;border:1px solid var(--accent);z-index:3;pointer-events:none;
+}
+.feature-corner.tl{top:8px;left:8px;border-right:0;border-bottom:0}
+.feature-corner.tr{top:8px;right:8px;border-left:0;border-bottom:0}
+.feature-corner.bl{bottom:8px;left:8px;border-right:0;border-top:0}
+.feature-corner.br{bottom:8px;right:8px;border-left:0;border-top:0}
+
+/* Projects gallery grid */
+.gallery{
+  display:grid;grid-template-columns:repeat(12,1fr);
+  gap:24px;
+}
+.g-card{
+  position:relative;overflow:hidden;background:#0a0c10;border:1px solid var(--line);
+  cursor:pointer;transition:.5s;
+}
+.g-card.span-6{grid-column:span 6}
+.g-card.span-4{grid-column:span 4}
+.g-card.span-8{grid-column:span 8}
+.g-card.span-12{grid-column:span 12}
+.g-img{aspect-ratio:16/9;overflow:hidden;position:relative}
+.g-img img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,1,.3,1);filter:brightness(.85) contrast(1.05)}
+.g-card:hover .g-img img{transform:scale(1.05);filter:brightness(1) contrast(1.1)}
+.g-card:hover{border-color:var(--accent)}
+.g-info{padding:20px 24px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.g-tag{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.25em;color:var(--accent);text-transform:uppercase}
+.g-title{font-size:18px;font-weight:600;font-family:'Noto Sans SC',sans-serif}
+.g-card .g-img::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 60%,rgba(0,0,0,.6));
+  pointer-events:none;opacity:.6;transition:.5s;
+}
+.g-card:hover .g-img::after{opacity:.3}
+
+/* CTA / Contact */
+.contact{padding:160px 48px;position:relative;z-index:2;border-top:1px solid var(--line)}
+.contact-inner{max-width:1600px;margin:0 auto;text-align:center}
+.contact-tag{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:.4em;text-transform:uppercase;margin-bottom:32px}
+.contact-title{
+  font-size:clamp(48px,9vw,160px);font-weight:700;line-height:.9;letter-spacing:-.04em;
+  margin-bottom:48px;
+}
+.contact-title em{font-style:normal;background:linear-gradient(120deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.contact-info{
+  display:flex;justify-content:center;gap:60px;flex-wrap:wrap;
+  font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.2em;
+  color:var(--muted);text-transform:uppercase;
+}
+.contact-info .item{display:flex;flex-direction:column;gap:8px;align-items:center}
+.contact-info .label{color:var(--muted);font-size:10px}
+.contact-info .val{color:var(--fg);font-size:18px;letter-spacing:.1em}
+
+footer{
+  border-top:1px solid var(--line);padding:32px 48px;
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);
+  letter-spacing:.2em;text-transform:uppercase;
+}
+
+/* Reveal animation */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 1s cubic-bezier(.2,1,.3,1),transform 1s cubic-bezier(.2,1,.3,1)}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+/* Marquee */
+.marquee{
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:24px 0;overflow:hidden;white-space:nowrap;
+  font-family:'Space Grotesk',sans-serif;font-weight:700;
+  font-size:clamp(28px,5vw,80px);letter-spacing:-.02em;
+}
+.marquee-track{display:inline-block;animation:marquee 40s linear infinite}
+.marquee-track span{color:var(--accent);margin:0 24px}
+.marquee-track em{font-style:normal;color:var(--muted)}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* Responsive */
+@media(max-width:900px){
+  body{cursor:auto}.cursor{display:none}
+  nav{padding:18px 24px}
+  .nav-menu{display:none}
+  .hero,.section,.contact{padding:100px 24px}
+  .about{grid-template-columns:1fr;gap:48px}
+  .feature-item,.feature-item.reverse{grid-template-columns:1fr;gap:32px}
+  .feature-item.reverse .feature-content{order:1}
+  .feature-item.reverse .feature-visual{order:2}
+  .g-card.span-6,.g-card.span-4,.g-card.span-8{grid-column:span 12}
+  .timeline{grid-template-columns:1fr}
+  .tl-row .year{padding:24px 0 8px;border-right:0;border-bottom:1px solid var(--line)}
+  .tl-row .info{padding:16px 0;border-bottom:1px solid var(--line)}
+  .tl-row .info::before{display:none}
+  .hero-sub{grid-template-columns:1fr}
+  .hero-stats{flex-wrap:wrap;gap:24px}
+  .gallery{gap:16px}
+  .section-head{flex-direction:column;align-items:flex-start}
+  .section-meta{text-align:left}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="grid-bg"></div>
+<div class="noise"></div>
+
+<nav>
+  <div class="nav-logo">W<span>.</span>L LEE / 李俊</div>
+  <div class="nav-menu">
+    <a href="#about">About</a>
+    <a href="#experience">Career</a>
+    <a href="#featured">Works</a>
+    <a href="#gallery">Archive</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-meta">
+      <span class="dot"></span>
+      <span>// Available for Collaboration</span>
+      <span>// Shanghai · 2026</span>
+      <span>// v3.0</span>
+    </div>
+    <div class="hero-title">
+      <span class="line1">PERSONAL WORKS BY</span>
+      <span class="name">
+        WILLIAM<span class="cn">李俊</span>LEE
+      </span>
+    </div>
+    <div class="hero-sub">
+      <div class="hero-tagline">
+        不靠感觉拍脑袋，<strong>只靠数据拿结果</strong>。<br>
+        在堆满字纸篓的背面，是底层数据的精准对齐；<br>
+        在殚精竭虑的尽头，是算法模型的最优解。
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="num">12+</span><span class="label">Years</span></div>
+        <div class="stat"><span class="num">6</span><span class="label">Top Brands</span></div>
+        <div class="stat"><span class="num">4</span><span class="label">AI Products</span></div>
+        <div class="stat"><span class="num">510w</span><span class="label">Single Deal</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <span>SCROLL</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- Marquee -->
+<div class="marquee">
+  <div class="marquee-track">
+    <em>DIGITAL BASE</em> <span>★</span> AI FULL-STACK <span>★</span> <em>BRAND PLANNING</em> <span>★</span> 数据驱动 <span>★</span> <em>QUANT TRADING</em> <span>★</span> 医美抗衰 <span>★</span> <em>CONTENT AUTOMATION</em> <span>★</span> Logic is Everything <span>★</span>
+    <em>DIGITAL BASE</em> <span>★</span> AI FULL-STACK <span>★</span> <em>BRAND PLANNING</em> <span>★</span> 数据驱动 <span>★</span> <em>QUANT TRADING</em> <span>★</span> 医美抗衰 <span>★</span> <em>CONTENT AUTOMATION</em> <span>★</span> Logic is Everything <span>★</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <div>
+        <div class="section-num">01 / DIGITAL BASE</div>
+        <h2 class="section-title">关于我 <em>— About</em></h2>
+      </div>
+      <div class="section-meta">[ profile · skill stack · philosophy ]</div>
+    </div>
+
+    <div class="about">
+      <div class="about-quote reveal">
+        从未有过一次伟大的策略，<br>
+        是诞生于<span class="highlight">偶然</span>。<br><br>
+        痛苦与快乐并存，<br>
+        是因为我们正在用<span class="highlight">理性的极致</span>，<br>
+        去重塑感性的边界。<br><br>
+        这才是 <span class="highlight">"数字基座"</span> 的魅力。
+        <span class="en">Ideas are cheap. Logic is everything.</span>
+      </div>
+
+      <div class="skill-stack">
+        <div class="skill-card reveal">
+          <div class="skill-num">// 01</div>
+          <div class="skill-title">医美日化行业 — "开荒手"</div>
+          <div class="skill-desc">带过跨国团队，搞得定国际认证（泰国、越南、柬埔寨 FDA），能让海外诊所从 0 到 1 真正落地。</div>
+        </div>
+        <div class="skill-card reveal">
+          <div class="skill-num">// 02</div>
+          <div class="skill-title">AI 全栈开发 — 落地专家</div>
+          <div class="skill-desc">独立代码开发：AI 医生、股票量化工具、旧房改造、小红书自动化运营 &amp; 发布 — 用技术把复杂的人工活儿变成全自动。</div>
+        </div>
+        <div class="skill-card reveal">
+          <div class="skill-num">// 03</div>
+          <div class="skill-title">流量省钱 — 高手</div>
+          <div class="skill-desc">用 AI 批量生产爆款内容，让获客成本直接砍半，一个人顶一个内容团队。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section" id="experience">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <div>
+        <div class="section-num">02 / TIMELINE</div>
+        <h2 class="section-title">职业轨迹 <em>— Career</em></h2>
+      </div>
+      <div class="section-meta">[ 2013 — present · Shanghai ]</div>
+    </div>
+
+    <div class="timeline reveal">
+      <div class="tl-row">
+        <div class="year">2024.06 — NOW</div>
+        <div class="info">
+          <div class="tl-company">Alibaba</div>
+          <div class="tl-role">Digital Base · 数据中台</div>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="year">2020.10 — 2024.05</div>
+        <div class="info">
+          <div class="tl-company">Baidu</div>
+          <div class="tl-role">Brand Planning · 品牌全案</div>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="year">2019.01 — 2020.10</div>
+        <div class="info">
+          <div class="tl-company">Sohu</div>
+          <div class="tl-role">Connect Campaign · 内容合作</div>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="year">2018.01 — 2019.01</div>
+        <div class="info">
+          <div class="tl-company">CIG</div>
+          <div class="tl-role">Innovation Marketing · 创新营销</div>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="year">2015.07 — 2017.12</div>
+        <div class="info">
+          <div class="tl-company">IPG MullenLowe Profero</div>
+          <div class="tl-role">Account &amp; Strategy</div>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="year">2013.03 — 2015.06</div>
+        <div class="info">
+          <div class="tl-company">Lingtong Key Biotech</div>
+          <div class="tl-role">Medical Aesthetic · 医美抗衰</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED PROJECTS -->
+<section class="section" id="featured">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <div>
+        <div class="section-num">03 / SIGNATURE</div>
+        <h2 class="section-title">独立产品 <em>— AI Full-Stack</em></h2>
+      </div>
+      <div class="section-meta">[ self-built · production-ready ]</div>
+    </div>
+
+    <div class="featured">
+
+      <!-- 01 红书自动化 -->
+      <div class="feature-item reveal">
+        <div class="feature-content">
+          <div class="feature-num">01</div>
+          <div class="feature-tag">Campaign · Automation</div>
+          <h3 class="feature-title">小红书自动化<br>运营开发</h3>
+          <p class="feature-desc">实现 PC &amp; 手机端同步自动收集和抓取帖子，结合爆款文章迅速拆解并仿写。集采集和发布一体化，彻底释放人员生产力 — 一人顶一个内容团队。</p>
+          <a class="feature-link" href="https://my.feishu.cn/base/ZaUdbFi6DaL9o4s1TeAcJaqzndh" target="_blank">
+            View on Feishu
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="feature-visual">
+          <span class="feature-corner tl"></span><span class="feature-corner tr"></span>
+          <span class="feature-corner bl"></span><span class="feature-corner br"></span>
+          <img src="portfolio_images/page_04.jpg" alt="Xiaohongshu Automation">
+        </div>
+      </div>
+
+      <!-- 02 健康分析 -->
+      <div class="feature-item reverse reveal">
+        <div class="feature-content">
+          <div class="feature-num">02</div>
+          <div class="feature-tag">AI · Healthcare</div>
+          <h3 class="feature-title">再生医学<br>数字化引擎</h3>
+          <p class="feature-desc">通过 Python 编写 AI 诊断逻辑，将 TMT 报告与血检指标秒级降维转化为治疗方案，解决上游厂家与终端机构的认知断层。</p>
+          <a class="feature-link" href="https://williamleo0369-ux.github.io/health-analyzer/" target="_blank">
+            Live Demo
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="feature-visual">
+          <span class="feature-corner tl"></span><span class="feature-corner tr"></span>
+          <span class="feature-corner bl"></span><span class="feature-corner br"></span>
+          <img src="portfolio_images/page_05.jpg" alt="Health Analyzer">
+        </div>
+      </div>
+
+      <!-- 03 量化 -->
+      <div class="feature-item reveal">
+        <div class="feature-content">
+          <div class="feature-num">03</div>
+          <div class="feature-tag">Quant · Trading</div>
+          <h3 class="feature-title">量化投研<br>系统搭建</h3>
+          <p class="feature-desc">部署于 GitHub 的实时监控平台 — 自选股看板、K 线图表、AI 助理与社区情报一体化。利用量化思维对冲市场波动，每一次决策都从数据里来：行情分析、单股回测、板块分析、热点追踪、策略回测、组合管理、市场情绪、风险管理。</p>
+          <a class="feature-link" href="https://williamleo0369-ux.github.io/quant-monitor/" target="_blank">
+            Live Demo
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="feature-visual">
+          <span class="feature-corner tl"></span><span class="feature-corner tr"></span>
+          <span class="feature-corner bl"></span><span class="feature-corner br"></span>
+          <img src="portfolio_images/page_06.jpg?v=20260427" alt="Quant Monitor">
+        </div>
+      </div>
+
+      <!-- 04 旧房改造 -->
+      <div class="feature-item reverse reveal">
+        <div class="feature-content">
+          <div class="feature-num">04</div>
+          <div class="feature-tag">AI · Vision</div>
+          <h3 class="feature-title">旧房改造<br>AI 决策系统</h3>
+          <p class="feature-desc">独立开发的 AI 空间重塑工具，覆盖北欧 / 奶油 / 日式 / 极简 / 法式 / 意式六大风格方案。Python Flask 后端自动解析用户上传的空间照片，输出专业级改造效果图、工程约束条件与费用预估 — 是"空间抗衰"概念的数字化载体。</p>
+          <a class="feature-link" href="https://old-house-renovation-design1-0.vercel.app/" target="_blank">
+            Live Demo
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="feature-visual">
+          <span class="feature-corner tl"></span><span class="feature-corner tr"></span>
+          <span class="feature-corner bl"></span><span class="feature-corner br"></span>
+          <img src="portfolio_images/page_07.jpg?v=20260427" alt="Home Renovator AI">
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Marquee 2 -->
+<div class="marquee">
+  <div class="marquee-track">
+    <em>BRAND CAMPAIGNS</em> <span>★</span> ALIBABA <span>★</span> <em>BAIDU</em> <span>★</span> SOHU <span>★</span> <em>AUDI</em> <span>★</span> RADO <span>★</span> <em>LONGINES</em> <span>★</span> NIO <span>★</span> <em>VASELINE</em> <span>★</span> JÄGERMEISTER <span>★</span> <em>HAVAL</em> <span>★</span> CHERY <span>★</span>
+    <em>BRAND CAMPAIGNS</em> <span>★</span> ALIBABA <span>★</span> <em>BAIDU</em> <span>★</span> SOHU <span>★</span> <em>AUDI</em> <span>★</span> RADO <span>★</span> <em>LONGINES</em> <span>★</span> NIO <span>★</span> <em>VASELINE</em> <span>★</span> JÄGERMEISTER <span>★</span>
+  </div>
+</div>
+
+<!-- GALLERY / ARCHIVE -->
+<section class="section" id="gallery">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <div>
+        <div class="section-num">04 / ARCHIVE</div>
+        <h2 class="section-title">品牌作品 <em>— Campaign Archive</em></h2>
+      </div>
+      <div class="section-meta">[ 25+ projects · 2013—2026 ]</div>
+    </div>
+
+    <div class="gallery">
+
+      <div class="g-card span-8 reveal">
+        <div class="g-img"><img src="portfolio_images/page_11.jpg" alt="Easebell UN"></div>
+        <div class="g-info"><span class="g-title">医美抗衰 · 国际化 IP — 联合国展示</span><span class="g-tag">Brand · IP</span></div>
+      </div>
+      <div class="g-card span-4 reveal">
+        <div class="g-img"><img src="portfolio_images/page_12.jpg" alt="Conference"></div>
+        <div class="g-info"><span class="g-title">大型会议案例 · 50w → 510w</span><span class="g-tag">Event</span></div>
+      </div>
+
+      <div class="g-card span-4 reveal">
+        <div class="g-img"><img src="portfolio_images/page_08.jpg" alt="Baiwei Game Character"></div>
+        <div class="g-info"><span class="g-title">BAIWEI · 游戏人物设计</span><span class="g-tag">Design</span></div>
+      </div>
+      <div class="g-card span-4 reveal">
+        <div class="g-img"><img src="portfolio_images/page_09.jpg" alt="Baiwei Beer"></div>
+        <div class="g-info"><span class="g-title">BAIWEI · 啤酒海报</span><span class="g-tag">AI · Design</span></div>
+      </div>
+      <div class="g-card span-4 reveal">
+        <div class="g-img"><img src="portfolio_images/page_10.jpg" alt="Medture"></div>
+        <div class="g-info"><span class="g-title">MEDTURE · 护肤不对 美丽白费</span><span class="g-tag">Makeup</span></div>
+      </div>
+
+      <div class="g-card span-6 reveal">
+        <div class="g-img"><img src="portfolio_images/page_13.jpg" alt="Vaseline"></div>
+        <div class="g-info"><span class="g-title">VASELINE · 凡士林 精唇呵护</span><span class="g-tag">Makeup</span></div>
+      </div>
+      <div class="g-card span-6 reveal">
+        <div class="g-img"><img src="portfolio_images/page_14.jpg" alt="Live"></div>
+        <div class="g-info"><span class="g-title">直播 · 姐姐的好物分享</span><span class="g-tag">Live</span></div>
+      </div>
+
+      <div class="g-card span-6 reveal">
+        <div class="g-img"><img src="portfolio_images/page_15.jpg" alt="Butter Cat"></div>
+        <div class="g-info"><span class="g-title">黄油猫 · 跨界潮玩出动</span><span class="g-tag">Tide Play</span></div>
+      </div>
+      <div class="g-card span-6 reveal">
+        <div class="g-img"><img src="portfolio_images/page_16.jpg" alt="Audi"></div>
+        <div class="g-info"><span class="g-title">AUDI · 美丽真我跨界大师赛</span><span class="g-tag">Crossover</span></div>
+      </div>
+
+      <div class="g-card span-4 reveal">
+        <div class="g-img"><img src="portfolio_images/page_17.jpg" alt="Longines"></div>
+        <div class="g-info"><span class="g-title">LONGINES · 搜城记</span><span class="g-tag">Connect</span></div>
+      </div>
+      <div class="g-card span-4 reveal">
+        <div class="g-img"><img src="portfolio_images/page_18.jpg" alt="Rado Captain Cook"></div>
+        <div class="g-info"><span class="g-title">RADO · Captain Cook</span><span class="g-tag">Connect</span></div>
+      </div>
+      <div class="g-card span-4 reveal">
+        <div class="g-img"><img src="portfolio_images/page_19.jpg" alt="Rado Feel It"></div>
+        <div class="g-info"><span class="g-title">RADO · Feel It</span><span class="g-tag">Connect</span></div>
+      </div>
+
+      <div class="g-card span-6 reveal">
+        <div class="g-img"><img src="portfolio_images/page_20.jpg" alt="NIO"></div>
+        <div class="g-info"><span class="g-title">NIO · 媒介规划创新营销奖 — 大师 TED</span><span class="g-tag">Award</span></div>
+      </div>
+      <div class="g-card span-6 reveal">
+        <div class="g-img"><img src="portfolio_images/page_21.jpg" alt="Haval"></div>
+        <div class="g-info"><span class="g-title">HAVAL F5 · 品牌全案</span><span class="g-tag">Brand</span></div>
+      </div>
+
+      <div class="g-card span-4 reveal">
+        <div class="g-img"><img src="portfolio_images/page_22.jpg" alt="Tiggo 8"></div>
+        <div class="g-info"><span class="g-title">奇瑞瑞虎 8 · 品牌全案</span><span class="g-tag">Brand</span></div>
+      </div>
+      <div class="g-card span-4 reveal">
+        <div class="g-img"><img src="portfolio_images/page_23.jpg" alt="Senia R9"></div>
+        <div class="g-info"><span class="g-title">SENIA R9 · 星空下最美</span><span class="g-tag">Launch</span></div>
+      </div>
+      <div class="g-card span-4 reveal">
+        <div class="g-img"><img src="portfolio_images/page_24.jpg" alt="Rado TVC"></div>
+        <div class="g-info"><span class="g-title">RADO · 艺人 TVC 拍摄</span><span class="g-tag">Artist</span></div>
+      </div>
+
+      <div class="g-card span-8 reveal">
+        <div class="g-img"><img src="portfolio_images/page_25.jpg" alt="Longines TVC"></div>
+        <div class="g-info"><span class="g-title">LONGINES · 艺人 TVC 拍摄</span><span class="g-tag">Artist Cooperation</span></div>
+      </div>
+      <div class="g-card span-4 reveal">
+        <div class="g-img"><img src="portfolio_images/page_26.jpg" alt="Jagermeister"></div>
+        <div class="g-info"><span class="g-title">JÄGERMEISTER · 潮出圈 野出格</span><span class="g-tag">Display</span></div>
+      </div>
+
+      <div class="g-card span-4 reveal">
+        <div class="g-img"><img src="portfolio_images/page_27.jpg" alt="Brand Person"></div>
+        <div class="g-info"><span class="g-title">荣获公司 · 品牌榜样人物</span><span class="g-tag">Brand Planning</span></div>
+      </div>
+      <div class="g-card span-4 reveal">
+        <div class="g-img"><img src="portfolio_images/page_28.jpg" alt="Classical Illustration"></div>
+        <div class="g-info"><span class="g-title">商业插画 · 古风系列</span><span class="g-tag">Classical</span></div>
+      </div>
+      <div class="g-card span-4 reveal">
+        <div class="g-img"><img src="portfolio_images/page_29.jpg" alt="Popular Illustration"></div>
+        <div class="g-info"><span class="g-title">商业插画 · 潮流系列</span><span class="g-tag">Popular</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-tag reveal">// LET'S BUILD SOMETHING</div>
+    <h2 class="contact-title reveal">Logic <em>is</em><br>Everything.</h2>
+    <div class="contact-info reveal">
+      <div class="item">
+        <span class="label">Phone</span>
+        <span class="val">186 2170 3527</span>
+      </div>
+      <div class="item">
+        <span class="label">Email</span>
+        <span class="val">williamleo0237@gmail.com</span>
+      </div>
+      <div class="item">
+        <span class="label">Base</span>
+        <span class="val">Shanghai · CN</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>© 2026 William Lee · 李俊 · All works are personal. </div>
+  <div>Built with logic, not luck.</div>
+</footer>
+
+<script>
+// Custom cursor
+const cursor=document.getElementById('cursor');
+document.addEventListener('mousemove',e=>{
+  cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px';
+});
+document.querySelectorAll('a, .g-card, .skill-card, .feature-item').forEach(el=>{
+  el.addEventListener('mouseenter',()=>cursor.classList.add('hover'));
+  el.addEventListener('mouseleave',()=>cursor.classList.remove('hover'));
+});
+
+// Reveal on scroll
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+},{threshold:.12,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
