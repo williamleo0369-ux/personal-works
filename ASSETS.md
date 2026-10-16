@@ -42,3 +42,19 @@ Built-in imagegen, transparent background. Reference: the supplied character ima
 - `assets/hardware/moss-demo.webp`: frame at 00:05 from the existing MOSS Bilibili and music demonstration video.
 
 These are existing project images and video frames; no new image generation or semantic image editing was used for this addition.
+
+## Latest character replacement
+
+The active character is the latest user-supplied studio portrait: navy plaid shirt, cream henley, ivory knit sweater tied over the shoulders, dark wide-leg jeans and black shoes. Earlier character assets are retained as previous versions.
+
+- `assets/william-studio-v2.webp`: format conversion of the latest user-supplied studio portrait, without semantic editing.
+- `assets/william-cutout-v2.webp`: built-in imagegen background extraction, actual transparent alpha. Used in the hero and capabilities.
+- `assets/william-window-v2.webp`: built-in imagegen edit of the existing contact window using the latest identity and outfit reference; transparency preserved.
+
+### Cutout prompt
+
+> Use case: background-extraction. Precisely remove only the white studio background from this supplied full-body portrait. Preserve the exact same adult man's face, facial identity, hair, pose, proportions, dark navy plaid shirt, cream henley undershirt, ivory knit sweater tied over shoulders, dark wide-leg jeans and black leather shoes. Do not redraw, restyle, beautify, or change expression. Preserve the entire full body head to both shoes, center the figure with modest margin, genuine transparent alpha background, no ground shadow, no added objects, no text. This is a website hero cutout.
+
+### Window prompt
+
+> Use case: identity-preserve. Edit image 2, the existing open-window website vignette. Replace ONLY the seated man with the exact adult man and complete outfit from image 1: tousled black hair, same recognizable face, navy charcoal plaid shirt over cream henley, ivory knitted sweater tied over shoulders, dark wide-leg jeans. Keep image 2's white casement window, both outward-open shutters, framing, pale blue studio, laptop, desk, seated working pose and photographic lighting unchanged. Match the face from image 1 accurately. Full window and both shutters completely visible as one isolated object on actual transparent alpha background. No text, no logos, no added people, no additional objects. Preserve transparency.

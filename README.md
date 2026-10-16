@@ -37,4 +37,4 @@ The repository uses a static root suitable for GitHub Pages. Merging the redesig
 
 ## Image provenance
 
-`william-street.webp` is a web-optimized copy of the supplied image. The transparent person and cloud panorama were produced with the built-in imagegen tool, then converted to WebP. Prompts and asset details are in `ASSETS.md`. The display font is Bebas Neue under the included SIL Open Font License.
+`william-studio-v2.webp` is a web-optimized copy of the latest supplied character portrait. The hero, capability vignette and contact window use the same updated plaid-shirt and ivory-knit outfit. The transparent person and cloud panorama were produced with the built-in imagegen tool, then converted to WebP. Prompts and asset details are in `ASSETS.md`. The display font is Bebas Neue under the included SIL Open Font License.

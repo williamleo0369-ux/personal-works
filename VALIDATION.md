@@ -15,3 +15,5 @@ Checked locally in Chromium on 2026-10-16.
 External project links are retained from the previous portfolio. Availability or login access at those destinations is not a claim made by this validation.
 
 Hardware update: FlowPilot and MOSS lead the selected grid. Their dialogs include the original project image and a frame from the existing live demonstration. Desktop and 390px mobile layouts were checked.
+
+Character replacement: all four placements (hero, capability vignette, profile portrait and contact window) reference the latest v2 images. Desktop and 390px mobile hero crops, studio profile and contact composition were visually inspected.
