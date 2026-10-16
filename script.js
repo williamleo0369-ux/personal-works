@@ -131,8 +131,11 @@ let scheduled=false;
 function updateScroll(){
   scheduled=false;
   if(!reducedMotion.matches) document.documentElement.style.setProperty('--scroll',String(Math.min(1.5,window.scrollY/window.innerHeight)));
-  const active=sections.find(s=>{const r=s.getBoundingClientRect();return r.top<=65 && r.bottom>65;});
-  header.classList.toggle('on-paper',!!active?.classList.contains('light-section'));
+  const paperUnderHeader=sections.some(s=>{
+    if(!s.classList.contains('light-section')) return false;
+    const r=s.getBoundingClientRect();return r.top<header.offsetHeight && r.bottom>0;
+  });
+  header.classList.toggle('on-paper',paperUnderHeader);
 }
 addEventListener('scroll',()=>{if(!scheduled){scheduled=true;requestAnimationFrame(updateScroll);}},{passive:true});
 addEventListener('resize',updateScroll,{passive:true});
