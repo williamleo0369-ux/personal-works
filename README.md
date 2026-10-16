@@ -28,8 +28,4 @@ https://williamleo0369-ux.github.io/personal-works/
 5. **Archive** — 18 brand campaigns (RADO, Audi, NIO, Longines, Vaseline...)
 6. **Contact** — Phone / Email / Base
 
-## Contact
 
-- 📞 186 2170 3527
-- ✉️ williamleo0237@gmail.com
-- 📍 Shanghai · CN
