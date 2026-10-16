@@ -15,7 +15,7 @@ Open http://127.0.0.1:4173. `index.html` also works directly from disk.
 ## Content and interaction
 
 - Layered cloud hero: oversized name, identity-preserving character cutout, scroll and pointer parallax.
-- Eight selected projects, led by the FlowPilot keyboard and MOSS desktop assistant; filters for brand campaigns, AI products and visual art. The full archive retains every original gallery project and all six AI/hardware projects.
+- Twelve selected projects, including the FlowPilot keyboard, MOSS desktop assistant and five app projects; filters for apps, brand campaigns, AI products and visual art. The full archive retains every original gallery project and all six AI/hardware projects.
 - Keyboard-accessible project dialog, close with Escape or the close button.
 - Three capability sections, personal introduction, expandable career timeline and email/phone/GitHub contact links.
 - Chinese and English text switch, remembered locally.
@@ -38,3 +38,5 @@ The repository uses a static root suitable for GitHub Pages. Merging the redesig
 ## Image provenance
 
 `william-studio-v2.webp` is a web-optimized copy of the latest supplied character portrait. The hero, capability vignette and contact window use the same updated plaid-shirt and ivory-knit outfit. The transparent person and cloud panorama were produced with the built-in imagegen tool, then converted to WebP. Prompts and asset details are in `ASSETS.md`. The display font is Bebas Neue under the included SIL Open Font License.
+
+App projects include Workday Alarm, LingoRole, Smart Renovation Studio, 时空盘 and Liræ. Their image provenance and implementation scope are documented in `ASSETS.md`.

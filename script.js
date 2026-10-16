@@ -30,8 +30,15 @@ const aiProjects = [
   {id:'ai-quant',title:'量化投研 · 数据看板',en:'Quant research · Data dashboard',src:'portfolio_images/page_06.jpg',tag:'AI · Data',category:'ai',url:'https://williamleo0369-ux.github.io/quant-monitor/',description:'个人开发实践：整合自选股、行情可视化与研究信息，探索数据驱动的投研工作流。',descriptionEn:'A personal exploration of market visualization, watchlists and data-driven research workflows.'},
   {id:'ai-space',title:'旧房改造 · AI 空间探索',en:'Home renovator · AI space exploration',src:'portfolio_images/page_07.jpg',tag:'AI · Spatial Design',category:'ai',url:'https://old-house-renovation-design1-0.vercel.app/',description:'个人产品原型：基于空间照片探索不同风格的改造方案与视觉表达。',descriptionEn:'A personal prototype exploring renovation styles and visual possibilities from room photographs.'}
 ];
-const allProjects = [...archiveProjects, ...aiProjects];
-const selectedIds = ['ai-flowpilot','ai-moss','archive-16','archive-18','ai-content','archive-10','archive-20','ai-space'];
+const appProjects = [
+  {id:'app-alarm',title:'Workday Alarm · 工作日闹钟',en:'Workday Alarm · Workday-aware alarms',src:'assets/apps/workday-alarm.webp',demoSrc:'assets/apps/workday-alarm-detail.webp',demoCaption:'功能说明图',demoCaptionEn:'Feature illustration',tag:'App · iOS',category:'app',background:'#edf4ee',summary:'法定节假日与调休，交给闹钟记住。',summaryEn:'An alarm designed around holidays and adjusted workdays.',description:'个人开发的工作日闹钟项目，围绕中国法定节假日与调休安排，管理工作日起床提醒。图片为已有项目宣传图与功能说明图。',descriptionEn:'A personal alarm app project designed around Chinese public holidays and adjusted workdays. Images are existing project promotional and feature illustrations.'},
+  {id:'app-lingorole',title:'LingoRole · 跨语言通话助手',en:'LingoRole · Cross-language call assistant',src:'assets/apps/lingorole.webp',tag:'App · macOS · AI',category:'app',background:'#e8effa',summary:'实时理解对话，按角色准备英文回答。',summaryEn:'Understand conversations and prepare role-aware English replies.',description:'原生 macOS 跨语言通话助手原型，结合语音转写、翻译、角色背景与英文回答草稿，并提供语音播放。当前图片为已有项目宣传图。',descriptionEn:'A native macOS prototype combining speech transcription, translation, role context, English reply drafts and speech playback. The image is an existing project promotional visual.'},
+  {id:'app-renovation',title:'Smart Renovation · 智能装修工作室',en:'Smart Renovation · Interior redesign app',src:'assets/apps/smart-renovation.webp',tag:'App · iOS / Android / Web',category:'app',background:'#f3eee4',summary:'上传房间照片，探索风格、改造约束与预算。',summaryEn:'Explore renovation styles, practical constraints and budgets.',description:'基于 React Native 与 Expo 的室内改造 App 原型，支持上传空间照片、选择装修风格、设置工程约束与预算估算，并接入 AI 图片服务。会员与项目历史采用本地状态管理。当前展示图为项目 App 图标。',descriptionEn:'A React Native and Expo interior-redesign prototype with room photos, style selection, renovation constraints, budget estimates and an AI image-service integration. Membership and project history currently use local state. The image is the project app icon.'},
+  {id:'app-spacetime',title:'时空盘 · 命盘、占事与择时',en:'Spacetime · Traditional calendar & charts',src:'assets/apps/spacetime.webp',demoSrc:'assets/apps/spacetime-interface.webp',demoCaption:'网页运行界面',demoCaptionEn:'Running web interface',tag:'App · Web / Desktop / iOS',category:'app',background:'#e9edf2',url:'https://shikongpan.leowilliam26.chatgpt.site/',summary:'把时间、节气与九宫结构放进同一个工具。',summaryEn:'Time, solar terms and nine-palace charts in one workspace.',description:'个人开发的传统文化学习工具，整合八字命盘、奇门排盘、黄历择时与罗盘，并支持盘例记录与学习笔记。首图为项目宣传图，下方为网页运行截图。',descriptionEn:'A personal traditional-culture learning tool combining birth charts, Qimen charts, calendar selection, a compass, records and learning notes. The cover is a promotional image; the additional image shows the running web app.'},
+  {id:'app-lirae',title:'Liræ · 无错琴 App',en:'Liræ · Guided musical expression',src:'assets/apps/lirae.webp',demoSrc:'assets/apps/lirae-stage.webp',demoCaption:'Stage 演奏界面',demoCaptionEn:'Stage performance interface',tag:'App · Music · MIDI',category:'app',background:'#efe9df',summary:'用简单输入推进旋律，让音乐表达更容易。',summaryEn:'Simple inputs move the melody forward, making music more accessible.',description:'基于 Expo 与 React Native 的无错琴软件 MVP。支持屏幕按键、电脑键盘与 MIDI 输入，通过旋律推进、节奏保护、曲库与回放，探索更低门槛的音乐表达。图片分别为 iOS 模拟器首页与 Stage 演奏界面。',descriptionEn:'An Expo and React Native music MVP with on-screen, computer-keyboard and MIDI input, guided melodies, rhythm protection, a song library and playback. Images show the iOS Simulator home screen and Stage interface.'}
+];
+const allProjects = [...archiveProjects, ...aiProjects, ...appProjects];
+const selectedIds = ['ai-flowpilot','ai-moss',...appProjects.map(p=>p.id),'archive-16','archive-18','ai-content','archive-10','archive-20'];
 let language = 'zh';
 try { if (localStorage.getItem('william-language') === 'en') language = 'en'; } catch (_) {}
 let activeFilter = 'selected';
@@ -58,7 +65,9 @@ function renderProjects() {
   grid.replaceChildren();
   shown.forEach((p, index) => {
     const article = document.createElement('article'); article.className = 'project';
+    if(p.category==='app') article.classList.add('project-app');
     const preview = document.createElement('button'); preview.className = 'project-preview';
+    if(p.background) preview.style.background=p.background;
     if(p.photo) preview.classList.add('project-photo');
     preview.type = 'button'; preview.setAttribute('aria-label', t('查看项目：','View project: ') + t(p.title,p.en));
     const image = document.createElement('img'); image.src = p.src.replace('portfolio_images/', 'assets/projects/').replace('.jpg', '.webp'); image.alt = t(p.title,p.en); image.loading = 'lazy'; image.decoding = 'async';
@@ -85,7 +94,8 @@ function fillProjectDialog(p) {
   const demo=document.querySelector('#dialog-demo');
   const demoImage=document.querySelector('#dialog-demo-image');
   demo.hidden=!p.demoSrc;
-  if(p.demoSrc){demoImage.src=p.demoSrc;demoImage.alt=t(p.title+' 现场演示截图',p.en+' — live demonstration frame');}
+  document.querySelector('#dialog-demo figcaption').textContent=t(p.demoCaption||'现场演示截图',p.demoCaptionEn||'Live demonstration frame');
+  if(p.demoSrc){demoImage.src=p.demoSrc;demoImage.alt=t(p.title+' — '+(p.demoCaption||'现场演示截图'),p.en+' — '+(p.demoCaptionEn||'live demonstration frame'));}
   else demoImage.removeAttribute('src');
   document.querySelector('#dialog-description').textContent = t(p.description,p.descriptionEn);
   const link = document.querySelector('#dialog-link');

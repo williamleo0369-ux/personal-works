@@ -17,3 +17,6 @@ dialog{border:0;padding:0;width:min(1100px,92vw);max-height:90svh;background:var
 
 /* Studio portrait has a light background; keep its full silhouette and readable caption. */
 .about-portrait>span{color:var(--ink);text-shadow:none}
+
+/* Preserve complete app screens and promotional artwork. */
+.project-app .project-preview>img{object-fit:contain;padding:22px;height:100%;width:100%}.project-app .project-caption p{font-size:11px;line-height:1.8;color:#5a6055}.filter-bar{flex-wrap:wrap}@media(max-width:600px){.project-app .project-preview>img{padding:14px}.project-app .project-caption p{font-size:10px}}
