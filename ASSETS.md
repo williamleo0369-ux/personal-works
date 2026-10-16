@@ -58,3 +58,18 @@ The active character is the latest user-supplied studio portrait: navy plaid shi
 ### Window prompt
 
 > Use case: identity-preserve. Edit image 2, the existing open-window website vignette. Replace ONLY the seated man with the exact adult man and complete outfit from image 1: tousled black hair, same recognizable face, navy charcoal plaid shirt over cream henley, ivory knitted sweater tied over shoulders, dark wide-leg jeans. Keep image 2's white casement window, both outward-open shutters, framing, pale blue studio, laptop, desk, seated working pose and photographic lighting unchanged. Match the face from image 1 accurately. Full window and both shutters completely visible as one isolated object on actual transparent alpha background. No text, no logos, no added people, no additional objects. Preserve transparency.
+
+## App portfolio additions — 2026-10-17
+
+Existing project assets are converted to WebP without semantic editing. No new AI images were generated for this update.
+
+- `assets/apps/workday-alarm.webp`: existing Workday Alarm launch poster (`WorkdayAlarm/Assets/Marketing/workday-alarm-xhs-launch-cover-v1.png`).
+- `assets/apps/workday-alarm-detail.webp`: existing calendar feature illustration (`WorkdayAlarm/Assets/Marketing/source-frames/calendar.png`). These are promotional illustrations, not represented as unedited runtime screenshots.
+- `assets/apps/lingorole.webp`: existing LingoRole promotional poster (`LingoRole/Assets/Marketing/lingorole-you-but-ready-poster-v5-bright-revised.png`).
+- `assets/apps/smart-renovation.webp`: existing Smart Renovation Studio app icon (`smart-renovation-studio/expo/assets/images/icon.png`); identified as an app icon in its project description.
+- `assets/apps/spacetime.webp`: existing public project cover (`qimen-spacetime/public/og.png`).
+- `assets/apps/spacetime-interface.webp`: fresh Chromium screenshot of the public running site at `https://shikongpan.leowilliam26.chatgpt.site/`, with the welcome dialog dismissed.
+- `assets/apps/lirae.webp`: existing iOS Simulator app screenshot (`lirae-app/artifacts/ios-simulator-running.png`).
+- `assets/apps/lirae-stage.webp`: existing Stage interface screenshot (`lirae-app/artifacts/five-song-stage.png`).
+
+Project descriptions are based on the respective project README, configuration and existing promotional material. Apps are presented as personal projects/prototypes; no new claim of App Store availability or production subscriptions is made.
