@@ -23,13 +23,15 @@ archiveProjects.forEach(p => {
   p.descriptionEn = 'A past collaborative project. See the original portfolio page for the project context and scope.';
 });
 const aiProjects = [
+  {id:'ai-flowpilot',title:'FlowPilot · AI 工作流键盘',en:'FlowPilot · AI workflow keyboard',src:'assets/hardware/flowpilot.webp',demoSrc:'assets/hardware/flowpilot-demo.webp',tag:'Hardware · AI',category:'ai',photo:true,summary:'实体按键、旋钮与 AI 工作流的连接实践。',summaryEn:'Physical keys and knobs, connected to AI workflows.',description:'个人硬件实践：围绕实体按键、旋钮和桌面工作流进行改造与 AI 辅助开发，将常用操作放到触手可及的位置。下方为实际设备与电脑界面的演示截图。',descriptionEn:'A personal hardware project using adaptation and AI-assisted development to connect physical keys and knobs to desktop workflows. The image below shows the device alongside the actual computer interface.'},
+  {id:'ai-moss',title:'MOSS · 桌面语音助手',en:'MOSS · Desktop voice assistant',src:'assets/hardware/moss.webp',demoSrc:'assets/hardware/moss-demo.webp',tag:'Hardware · Voice AI',category:'ai',photo:true,coverFit:'contain',summary:'从科幻造型，到语音打开 B 站与播放音乐。',summaryEn:'A sci-fi-inspired build for opening apps and playing music by voice.',description:'个人制作与调试的桌面原型，采用《流浪地球》MOSS 的造型，探索语音与电脑操作的连接。已有演示包括打开 B 站、打开网易云音乐并播放歌曲。首图为项目封面，下方为现场演示截图。',descriptionEn:'A personally built and tested desktop prototype inspired by MOSS from The Wandering Earth. Demonstrations include opening Bilibili and NetEase Cloud Music, and requesting music by voice. The first image is the project cover; the image below is a frame from the live demonstration.'},
   {id:'ai-content',title:'小红书 · 内容运营自动化',en:'Content workflow · Automation',src:'portfolio_images/page_04.jpg',tag:'AI · Automation',category:'ai',url:'https://my.feishu.cn/base/ZaUdbFi6DaL9o4s1TeAcJaqzndh',description:'个人开发实践：将内容采集、整理、分析与运营流程连接起来，探索重复工作的自动化。',descriptionEn:'A personal project connecting content collection, organization and analysis into an automated workflow.'},
   {id:'ai-health',title:'健康报告 · 信息分析工具',en:'Health reports · Information analysis',src:'portfolio_images/page_05.jpg',tag:'AI · Healthcare',category:'ai',url:'https://williamleo0369-ux.github.io/health-analyzer/',description:'个人产品原型：整理健康报告中的指标与信息，辅助理解和沟通。',descriptionEn:'A personal prototype for organizing health-report indicators and supporting clearer communication.'},
   {id:'ai-quant',title:'量化投研 · 数据看板',en:'Quant research · Data dashboard',src:'portfolio_images/page_06.jpg',tag:'AI · Data',category:'ai',url:'https://williamleo0369-ux.github.io/quant-monitor/',description:'个人开发实践：整合自选股、行情可视化与研究信息，探索数据驱动的投研工作流。',descriptionEn:'A personal exploration of market visualization, watchlists and data-driven research workflows.'},
   {id:'ai-space',title:'旧房改造 · AI 空间探索',en:'Home renovator · AI space exploration',src:'portfolio_images/page_07.jpg',tag:'AI · Spatial Design',category:'ai',url:'https://old-house-renovation-design1-0.vercel.app/',description:'个人产品原型：基于空间照片探索不同风格的改造方案与视觉表达。',descriptionEn:'A personal prototype exploring renovation styles and visual possibilities from room photographs.'}
 ];
 const allProjects = [...archiveProjects, ...aiProjects];
-const selectedIds = ['archive-16','archive-18','ai-content','archive-10','archive-20','ai-space'];
+const selectedIds = ['ai-flowpilot','ai-moss','archive-16','archive-18','ai-content','archive-10','archive-20','ai-space'];
 let language = 'zh';
 try { if (localStorage.getItem('william-language') === 'en') language = 'en'; } catch (_) {}
 let activeFilter = 'selected';
@@ -57,8 +59,10 @@ function renderProjects() {
   shown.forEach((p, index) => {
     const article = document.createElement('article'); article.className = 'project';
     const preview = document.createElement('button'); preview.className = 'project-preview';
+    if(p.photo) preview.classList.add('project-photo');
     preview.type = 'button'; preview.setAttribute('aria-label', t('查看项目：','View project: ') + t(p.title,p.en));
     const image = document.createElement('img'); image.src = p.src.replace('portfolio_images/', 'assets/projects/').replace('.jpg', '.webp'); image.alt = t(p.title,p.en); image.loading = 'lazy'; image.decoding = 'async';
+    if(p.coverFit) image.style.objectFit=p.coverFit;
     const tag = document.createElement('span'); tag.className = 'project-tag'; tag.textContent = p.tag.toUpperCase();
     const arrow = document.createElement('span'); arrow.className = 'project-open'; arrow.textContent = '↗'; arrow.setAttribute('aria-hidden','true');
     preview.append(image,tag,arrow); preview.addEventListener('click',()=>openProject(p));
@@ -66,6 +70,7 @@ function renderProjects() {
     const captionText = document.createElement('div');
     const title = document.createElement('h3'); title.textContent = t(p.title,p.en);
     const subtitle = document.createElement('p'); subtitle.textContent = p.category === 'ai' ? t('个人实践 / AI & DIGITAL','PERSONAL EXPLORATION / AI & DIGITAL') : t('项目档案 / '+p.tag.toUpperCase(),'PROJECT ARCHIVE / '+p.tag.toUpperCase());
+    if(p.summary) subtitle.textContent=t(p.summary,p.summaryEn);
     const number = document.createElement('span'); number.className = 'project-number'; number.textContent = String(index+1).padStart(2,'0');
     captionText.append(title,subtitle); caption.append(captionText,number); article.append(preview,caption); grid.append(article);
   });
@@ -77,6 +82,11 @@ function fillProjectDialog(p) {
   document.querySelector('#dialog-title').textContent = t(p.title,p.en);
   document.querySelector('#dialog-tag').textContent = p.tag.toUpperCase();
   const image = document.querySelector('#dialog-image'); image.src = p.src; image.alt = t(p.title,p.en);
+  const demo=document.querySelector('#dialog-demo');
+  const demoImage=document.querySelector('#dialog-demo-image');
+  demo.hidden=!p.demoSrc;
+  if(p.demoSrc){demoImage.src=p.demoSrc;demoImage.alt=t(p.title+' 现场演示截图',p.en+' — live demonstration frame');}
+  else demoImage.removeAttribute('src');
   document.querySelector('#dialog-description').textContent = t(p.description,p.descriptionEn);
   const link = document.querySelector('#dialog-link');
   if (p.url) {link.href = p.url; link.hidden = false;} else {link.removeAttribute('href');link.hidden = true;}

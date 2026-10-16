@@ -33,3 +33,12 @@ Bebas Neue, downloaded from the Google Fonts font distribution. License: `assets
 Built-in imagegen, transparent background. Reference: the supplied character image.
 
 > Use case: identity-preserve, compositing. Asset type: a photorealistic open-window vignette for a personal portfolio contact section. Use the single young adult East Asian man's exact identity from the supplied reference: same face, tousled black hair, white crew neck T shirt and cream trousers, black belt and silver watch. Show the same man seated in side three-quarter view at a white desk with a slim silver laptop, turning his head gently toward viewer. He is viewed THROUGH a real white painted casement window, both glass shutters open outward to left and right, complete rectangular window frame and shutters fully visible. Inside the window is a quiet pale blue architectural studio interior, natural daylight, subtle realistic shadows. The full window floats as one isolated photographic object against actual TRANSPARENT alpha background. Exterior surrounding the window must be entirely transparent, not blue. No text, no logos, no symbols, no decorative badges, no plants, no other people. Window and man fill the square composition with small transparent outer margin. Refined high-end photographic editorial collage, realistic scale and perspective, preserve recognizable exact facial identity.
+
+## Added personal hardware projects
+
+- `assets/hardware/flowpilot.webp`: WebP conversion of the user-supplied original FlowPilot reference image from the existing project asset library (`episode-02/00-reference.png`).
+- `assets/hardware/moss.webp`: WebP conversion of the existing MOSS project cover (`我把MOSS做出来了.png`). Displayed as a project cover, not labeled as an unedited photograph.
+- `assets/hardware/flowpilot-demo.webp`: frame at 00:04 from the existing FlowPilot hands-on demonstration video.
+- `assets/hardware/moss-demo.webp`: frame at 00:05 from the existing MOSS Bilibili and music demonstration video.
+
+These are existing project images and video frames; no new image generation or semantic image editing was used for this addition.

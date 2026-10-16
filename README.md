@@ -15,7 +15,7 @@ Open http://127.0.0.1:4173. `index.html` also works directly from disk.
 ## Content and interaction
 
 - Layered cloud hero: oversized name, identity-preserving character cutout, scroll and pointer parallax.
-- Six selected projects; filters for brand campaigns, AI products and visual art. The full archive retains every original gallery project and all four AI projects.
+- Eight selected projects, led by the FlowPilot keyboard and MOSS desktop assistant; filters for brand campaigns, AI products and visual art. The full archive retains every original gallery project and all six AI/hardware projects.
 - Keyboard-accessible project dialog, close with Escape or the close button.
 - Three capability sections, personal introduction, expandable career timeline and email/phone/GitHub contact links.
 - Chinese and English text switch, remembered locally.
