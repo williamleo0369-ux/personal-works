@@ -2,20 +2,13 @@
 (()=>{
   const root=document.documentElement;
   const reduced=matchMedia('(prefers-reduced-motion: reduce)');
-  const hero=document.querySelector('.hero-scene');
   const stage=document.querySelector('.flight-stage');
   const balloon=document.querySelector('.service-float');
-  const video=document.querySelector('.hero-video');
   const toggle=document.querySelector('.character-toggle');
-  const scenes=[hero,stage,balloon].filter(Boolean);
+  const scenes=[stage,balloon].filter(Boolean);
   const visible=new Set();
-  let paused=false,scheduled=false,videoFailed=false;
+  let paused=false,scheduled=false;
   try{paused=localStorage.getItem('william-character-paused')==='true';}catch(_){}
-  // Safari uses HEVC alpha; Chromium uses the existing VP9 alpha video.
-  const safari=/Safari/.test(navigator.userAgent)&&!/Chrome|Chromium|Edg|CriOS/.test(navigator.userAgent);
-  const videoSource=safari?video.dataset.safariSrc:video.dataset.src;
-  const videoType=safari?'video/mp4; codecs="hvc1"':'video/webm; codecs="vp9"';
-  const canVideo=Boolean(video.canPlayType(videoType))&&!navigator.connection?.saveData;
   function label(){
     const en=root.lang==='en';
     const text=paused?(en?'Play character animation':'播放人物动态'):(en?'Pause character animation':'暂停人物动态');
@@ -27,14 +20,8 @@
     root.classList.toggle('character-paused',inactive);
     scenes.forEach(scene=>scene.classList.toggle('character-active',visible.has(scene)&&!inactive));
     toggle.hidden=reduced.matches||visible.size===0;
-    if(!inactive&&visible.has(hero)&&canVideo&&!videoFailed){
-      if(!video.src) video.src=videoSource;
-      video.play().catch(()=>{hero.classList.remove('video-playing');});
-    }else video.pause();
     label();
   }
-  video.addEventListener('playing',()=>hero.classList.add('video-playing'));
-  video.addEventListener('error',()=>{videoFailed=true;hero.classList.remove('video-playing');});
   toggle.addEventListener('click',()=>{
     paused=!paused;
     try{localStorage.setItem('william-character-paused',String(paused));}catch(_){}
