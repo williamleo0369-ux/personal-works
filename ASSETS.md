@@ -89,3 +89,9 @@ The webpage pauses character loops when their scene is outside the viewport or t
 - `assets/motion/william-idle.webm`: ChatCut Seedance 2.5 first/last-frame generation, 5 seconds, using the same green portrait at both ends; source project `ccd91d14-54b2-4397-9945-f8cfb6c788cb`, asset `ea22e5bc-ebdb-4022-83c9-b6e804f2e6ce`. Converted locally to 640 × 960 VP9 with alpha, chroma-keyed and despilled, audio removed. The first provider rejected submission because of its plan requirement; no output from that attempt is used.
 
 Video prompt: Use the supplied portrait as exact opening and closing pose. Locked camera full-body portrait, maintaining the same face, hair and complete outfit. Soft breathing, one natural blink, a head turn of only a few degrees, then a gentle return to the original pose. Feet planted and framing unchanged. Perfectly uniform vivid green background throughout. Restrained lifelike motion, no speech, music or text.
+
+## Safari portrait compatibility — 2026-10-18
+
+`assets/motion/william-idle-safari.mov` is an HEVC-with-alpha transcode of the same five-second generated portrait source, using the identical keying and despill settings as the WebM. Apple AVFoundation exports the alpha layer from a ProRes 4444 intermediate. No additional image or video generation; no changes to the identity, motion, composition, other sections or text. Safari selects this file; Chromium retains its existing WebM.
+
+Codec reference: [Apple AVFoundation HEVC with alpha](https://developer.apple.com/documentation/avfoundation/avvideocodectype/hevcwithalpha)

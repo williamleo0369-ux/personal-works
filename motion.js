@@ -11,9 +11,11 @@
   const visible=new Set();
   let paused=false,scheduled=false,videoFailed=false;
   try{paused=localStorage.getItem('william-character-paused')==='true';}catch(_){}
-  // Safari does not consistently composite VP9 alpha; it keeps the portrait fallback.
+  // Safari uses HEVC alpha; Chromium uses the existing VP9 alpha video.
   const safari=/Safari/.test(navigator.userAgent)&&!/Chrome|Chromium|Edg|CriOS/.test(navigator.userAgent);
-  const canVideo=video.canPlayType('video/webm; codecs="vp9"')&&!safari&&!navigator.connection?.saveData;
+  const videoSource=safari?video.dataset.safariSrc:video.dataset.src;
+  const videoType=safari?'video/mp4; codecs="hvc1"':'video/webm; codecs="vp9"';
+  const canVideo=Boolean(video.canPlayType(videoType))&&!navigator.connection?.saveData;
   function label(){
     const en=root.lang==='en';
     const text=paused?(en?'Play character animation':'播放人物动态'):(en?'Pause character animation':'暂停人物动态');
@@ -26,7 +28,7 @@
     scenes.forEach(scene=>scene.classList.toggle('character-active',visible.has(scene)&&!inactive));
     toggle.hidden=reduced.matches||visible.size===0;
     if(!inactive&&visible.has(hero)&&canVideo&&!videoFailed){
-      if(!video.src) video.src=video.dataset.src;
+      if(!video.src) video.src=videoSource;
       video.play().catch(()=>{hero.classList.remove('video-playing');});
     }else video.pause();
     label();
