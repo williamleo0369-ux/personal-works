@@ -1,3 +1,7 @@
+# Current behavior — 2026-10-18
+
+The hero uses only the approved static portrait, with no video, entry animation, pointer movement or scroll movement on the person. The works flight and expertise balloon animations and their controls remain unchanged. Earlier video assets and implementation notes below are retained as history.
+
 # Character motion
 
 Reference choreography is adapted into three scenes while preserving the approved face and outfit:
