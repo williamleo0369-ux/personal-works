@@ -13,8 +13,9 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/sky.webp" as="image">
   <link rel="preload" href="assets/william-cutout-v2.webp" as="image">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=character-motion-1">
   <script src="script.js" defer></script>
+  <script src="motion.js?v=character-motion-1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main" data-zh="跳到主要内容" data-en="Skip to content">跳到主要内容</a>
@@ -28,7 +29,8 @@
       <div class="hero-scene">
         <img class="sky" src="assets/sky.webp" alt="" fetchpriority="high">
         <div class="hero-type"><p class="hero-eyebrow">PERSONAL WORKS · SHANGHAI</p><h1>WILLIAM LEE</h1><div class="hero-roles"><span>CREATIVE</span><span>BUILDER</span></div></div>
-        <img class="hero-person" src="assets/william-cutout-v2.webp" alt="李俊 William Lee，深色格纹衬衫、米白披肩与深色牛仔裤的人物形象" fetchpriority="high">
+        <img class="hero-person hero-portrait" src="assets/william-cutout-v2.webp" alt="李俊 William Lee，深色格纹衬衫、米白披肩与深色牛仔裤的人物形象" fetchpriority="high">
+        <video class="hero-person hero-video" data-src="assets/motion/william-idle.webm" muted loop playsinline preload="none" aria-hidden="true"></video>
         <div class="cloud-front" aria-hidden="true"></div>
         <div class="hero-bottom"><p data-zh="品牌的思考者，想法的实践者" data-en="A mind for brands A maker at heart">品牌的思考者，想法的实践者</p><a href="#intro" class="scroll-link"><span data-zh="向下探索" data-en="Scroll to explore">向下探索</span><span class="scroll-circle">↓</span></a><span class="hero-location">31°13′ N · 121°28′ E</span></div>
       </div>
@@ -41,6 +43,14 @@
     </section>
     <section class="works light-section" id="works">
       <div class="section-heading reveal"><div><p class="eyebrow">01 / SELECTED WORKS</p><h2 data-zh="做过的，正在做的" data-en="Selected things I’ve made">做过的，正在做的</h2></div><p class="section-note" data-zh="品牌项目与个人实践\n不同领域，同一种好奇心" data-en="Brand projects & personal experiments\nDifferent fields The same curiosity">品牌项目与个人实践<br>不同领域，同一种好奇心</p></div>
+      <div class="flight-stage" aria-label="William 飞越云间的个人作品">
+        <div class="flight-frame frame-one" aria-hidden="true"><img src="assets/hardware/flowpilot.webp" alt="" loading="lazy"></div>
+        <div class="flight-frame frame-two" aria-hidden="true"><img src="assets/apps/spacetime.webp" alt="" loading="lazy"></div>
+        <div class="flight-frame frame-three" aria-hidden="true"><img src="assets/hardware/moss.webp" alt="" loading="lazy"></div>
+        <div class="flight-frame frame-four" aria-hidden="true"><img src="assets/apps/lirae-stage.webp" alt="" loading="lazy"></div>
+        <div class="flight-person"><img src="assets/motion/william-flying.webp" alt="William 在云间飞行" loading="lazy"></div>
+        <div class="flight-clouds" aria-hidden="true"></div>
+      </div>
       <div class="filter-bar" role="group" aria-label="作品分类"><button class="filter active" data-filter="selected" aria-pressed="true" data-zh="精选" data-en="Selected">精选</button><button class="filter" data-filter="brand" aria-pressed="false" data-zh="品牌营销" data-en="Brand & Campaign">品牌营销</button><button class="filter" data-filter="app" aria-pressed="false" data-zh="App 作品" data-en="Apps">App 作品</button><button class="filter" data-filter="ai" aria-pressed="false" data-zh="AI 产品" data-en="AI & Digital">AI 产品</button><button class="filter" data-filter="visual" aria-pressed="false" data-zh="视觉创作" data-en="Visual & Art">视觉创作</button><span class="project-count" id="project-count" aria-live="polite"></span></div>
       <div class="project-grid" id="project-grid"></div>
       <button class="archive-button" id="archive-toggle" data-zh="查看完整作品档案 ↗" data-en="Explore the full archive ↗">查看完整作品档案 ↗</button>
@@ -50,7 +60,7 @@
       <div class="section-heading reveal"><div><p class="eyebrow">02 / WHAT I BRING</p><h2 data-zh="从想法，到作品" data-en="From a thought to a thing">从想法，到作品</h2></div><p class="section-note" data-zh="策略 · 表达 · 实现" data-en="STRATEGY · DESIGN · BUILD">策略 · 表达 · 实现</p></div>
       <div class="service-list">
         <article class="service reveal"><span class="service-index">01</span><h3>BRAND</h3><p class="service-label" data-zh="让品牌被理解" data-en="Make brands understood">让品牌被理解</p><p class="service-details">STRATEGY<br>POSITIONING<br>CONTENT & CAMPAIGN<br>INTEGRATED MARKETING</p><span class="service-orbit orbit-one" aria-hidden="true">✳</span></article>
-        <article class="service reveal"><span class="service-index">02</span><h3>DESIGN</h3><p class="service-label" data-zh="把想法变得可见" data-en="Give ideas a visible form">把想法变得可见</p><p class="service-details">VISUAL IDENTITY<br>UI / UX DESIGN<br>ART DIRECTION<br>AI VISUAL STORYTELLING</p><div class="service-photo" aria-hidden="true"><img src="assets/william-cutout-v2.webp" alt="" loading="lazy"></div></article>
+        <article class="service reveal"><span class="service-index">02</span><h3>DESIGN</h3><p class="service-label" data-zh="把想法变得可见" data-en="Give ideas a visible form">把想法变得可见</p><p class="service-details">VISUAL IDENTITY<br>UI / UX DESIGN<br>ART DIRECTION<br>AI VISUAL STORYTELLING</p><div class="service-float" aria-hidden="true"><img src="assets/motion/william-floating.webp" alt="" loading="lazy"></div></article>
         <article class="service reveal"><span class="service-index">03</span><h3>BUILD</h3><p class="service-label" data-zh="让好点子真正运转" data-en="Make good ideas work">让好点子真正运转</p><p class="service-details">AI PROTOTYPING<br>WORKFLOW AUTOMATION<br>CREATIVE CODING<br>HARDWARE EXPLORATION</p><span class="service-orbit orbit-two" aria-hidden="true">↗</span></article>
       </div><p class="expertise-foot" data-zh="有策略的创意，有落点的技术" data-en="Creativity with a strategy Technology with a purpose">有策略的创意，有落点的技术</p>
     </section>
@@ -67,6 +77,7 @@
   </main>
   <footer class="blue-section"><span>© <span id="year">2026</span> William Lee · 李俊</span><a href="#home" data-zh="回到云端 ↑" data-en="Back to the clouds ↑">回到云端 ↑</a><span>IDEAS INTO REALITY</span></footer>
   <dialog id="project-dialog" aria-labelledby="dialog-title"><div class="dialog-toolbar"><div><span class="eyebrow" id="dialog-tag"></span><h2 id="dialog-title"></h2></div><button id="dialog-close" aria-label="关闭项目预览">✕</button></div><div class="dialog-image-wrap"><img id="dialog-image" alt=""></div><div class="dialog-bottom"><p id="dialog-description"></p><a id="dialog-link" target="_blank" rel="noopener noreferrer" data-zh="打开项目 ↗" data-en="Open project ↗">打开项目 ↗</a></div><figure id="dialog-demo" class="dialog-demo" hidden><figcaption data-zh="现场演示截图" data-en="Live demonstration frame">现场演示截图</figcaption><img id="dialog-demo-image" alt="" loading="lazy"></figure></dialog>
+  <button class="character-toggle" hidden aria-label="暂停人物动态" aria-pressed="false"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path class="pause-icon" d="M6 5h4v14H6zm8 0h4v14h-4z"/><path class="play-icon" d="m8 4 12 8-12 8z"/></svg></button>
   <noscript><p class="noscript-note">查看作品需要启用 JavaScript也可以直接访问 <a href="https://github.com/williamleo0369-ux">GitHub</a>，或发送邮件至 williamleo0369@gmail.com</p></noscript>
 </body>
 </html>
