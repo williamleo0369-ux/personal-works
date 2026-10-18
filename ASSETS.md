@@ -73,3 +73,19 @@ Existing project assets are converted to WebP without semantic editing. No new A
 - `assets/apps/lirae-stage.webp`: existing Stage interface screenshot (`lirae-app/artifacts/five-song-stage.png`).
 
 Project descriptions are based on the respective project README, configuration and existing promotional material. Apps are presented as personal projects/prototypes; no new claim of App Store availability or production subscriptions is made.
+
+## Character motion — 2026-10-18
+
+All new poses use `william-studio-v2.webp` as identity and outfit reference. The supplied reference video guides the choreography: living portrait, cloud flight, balloon suspension. It is not embedded or redistributed.
+
+- `assets/motion/hero-green.webp`: built-in imagegen, full-body portrait on uniform green for video keying
+- `assets/motion/william-flying.webp`: built-in imagegen, same man flying horizontally, true transparent alpha
+- `assets/motion/william-floating.webp`: built-in imagegen, same man suspended by an ivory balloon, true transparent alpha
+
+Pose prompt constraints: preserve the recognizable face, tousled black hair, navy plaid shirt over cream henley, ivory knit sweater tied over shoulders, dark wide-leg jeans and black leather shoes. Keep the entire silhouette visible. Flight pose reaches forward toward the right with bent legs trailing left; balloon pose raises one hand to the string. No text, logos, extra people, or scenery. Transparent output for the two isolated action poses; uniform vivid green only for the animation input.
+
+The webpage pauses character loops when their scene is outside the viewport or the tab is hidden. Its pause button persists the user's choice. Reduced-motion preferences show static poses. Portrait video loads only when visible, with a static fallback for unsupported browsers and data-saving connections.
+
+- `assets/motion/william-idle.webm`: ChatCut Seedance 2.5 first/last-frame generation, 5 seconds, using the same green portrait at both ends; source project `ccd91d14-54b2-4397-9945-f8cfb6c788cb`, asset `ea22e5bc-ebdb-4022-83c9-b6e804f2e6ce`. Converted locally to 640 × 960 VP9 with alpha, chroma-keyed and despilled, audio removed. The first provider rejected submission because of its plan requirement; no output from that attempt is used.
+
+Video prompt: Use the supplied portrait as exact opening and closing pose. Locked camera full-body portrait, maintaining the same face, hair and complete outfit. Soft breathing, one natural blink, a head turn of only a few degrees, then a gentle return to the original pose. Feet planted and framing unchanged. Perfectly uniform vivid green background throughout. Restrained lifelike motion, no speech, music or text.
