@@ -28,3 +28,5 @@ dialog{border:0;padding:0;width:min(1100px,92vw);max-height:90svh;background:var
 @media(max-width:900px){.flight-stage{height:310px}.service-float{width:155px;height:270px;right:-8px;top:40px}}
 @media(max-width:600px){.flight-stage{height:270px;margin-bottom:28px}.flight-frame{width:25%;height:33%;padding:4px}.frame-one{left:4%;top:10%}.frame-two{left:37%;top:9%;width:22%;height:29%}.frame-three{right:30%;bottom:10%;width:26%;height:32%}.frame-four{right:4%;top:13%;width:22%;height:36%}.flight-person{top:34%;width:270px}.service-float{width:105px;height:200px;right:-20px;top:95px}.character-toggle{right:16px;bottom:20px;width:38px;height:38px}}
 @media(prefers-reduced-motion:reduce){.flight-person{transform:translateX(-50%)}.service-float{transform:none}.character-toggle{display:none}}
+
+#screen-gallery:not([hidden]){display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;padding:20px;background:#e9e9e4}#screen-gallery figure{margin:0}#screen-gallery img{width:100%;height:auto;display:block}#screen-gallery figcaption{font-size:14px;margin-top:10px}@media(max-width:700px){#screen-gallery:not([hidden]){grid-template-columns:1fr}}
