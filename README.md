@@ -11,7 +11,7 @@ A cloud-themed personal portfolio inspired by the supplied video reference, usin
 ## Content and interaction
 
 - Layered cloud hero: oversized name, identity-preserving character cutout, scroll and pointer parallax.
-- Twelve selected projects, including the FlowPilot keyboard, MOSS desktop assistant and five app projects; filters for apps, brand campaigns, AI products and visual art. The full archive retains every original gallery project and all six AI/hardware projects.
+- Eighteen selected projects, including the FlowPilot keyboard, MOSS desktop assistant and personal apps and software projects; filters for apps, brand campaigns, AI products and visual art. The full archive retains every original gallery project and all six AI/hardware projects.
 - Keyboard-accessible project dialog, close with Escape or the close button.
 - Three capability sections, personal introduction, expandable career timeline and email/phone/GitHub contact links.
 - Chinese and English text switch, remembered locally.

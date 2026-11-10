@@ -23,6 +23,7 @@ archiveProjects.forEach(p => {
   p.descriptionEn = 'A past collaborative project See the original portfolio page for the project context and scope';
 });
 const aiProjects = [
+  {"id": "airmouse", "title": "AirPods 飞鼠", "en": "AirPods Air Mouse", "src": "assets/apps/airmouse.webp", "category": "ai", "tag": "Hardware · Interaction", "description": "把 AirPods 改成飞鼠标，查看实际操作视频", "descriptionEn": "AirPods as an air mouse, with a recorded demonstration", "summary": "把 AirPods 改成飞鼠标，查看实际操作视频", "summaryEn": "AirPods as an air mouse, with a recorded demonstration", "coverFit": "contain", "video": "assets/hardware/airmouse-demo.mp4"},
   {id:'ai-flowpilot',title:'FlowPilot · AI 工作流键盘',en:'FlowPilot · AI workflow keyboard',src:'assets/hardware/flowpilot.webp',demoSrc:'assets/hardware/flowpilot-demo.webp',tag:'Hardware · AI',category:'ai',photo:true,summary:'实体按键、旋钮与 AI 工作流的连接实践',summaryEn:'Physical keys and knobs, connected to AI workflows',description:'个人硬件实践：围绕实体按键、旋钮和桌面工作流进行改造与 AI 辅助开发，将常用操作放到触手可及的位置下方为实际设备与电脑界面的演示截图',descriptionEn:'A personal hardware project using adaptation and AI-assisted development to connect physical keys and knobs to desktop workflows The image below shows the device alongside the actual computer interface'},
   {id:'ai-moss',title:'MOSS · 桌面语音助手',en:'MOSS · Desktop voice assistant',src:'assets/hardware/moss.webp',demoSrc:'assets/hardware/moss-demo.webp',tag:'Hardware · Voice AI',category:'ai',photo:true,coverFit:'contain',summary:'从科幻造型，到语音打开 B 站与播放音乐',summaryEn:'A sci-fi-inspired build for opening apps and playing music by voice',description:'个人制作与调试的桌面原型，采用《流浪地球》MOSS 的造型，探索语音与电脑操作的连接已有演示包括打开 B 站、打开网易云音乐并播放歌曲首图为项目封面，下方为现场演示截图',descriptionEn:'A personally built and tested desktop prototype inspired by MOSS from The Wandering Earth Demonstrations include opening Bilibili and NetEase Cloud Music, and requesting music by voice The first image is the project cover; the image below is a frame from the live demonstration'},
   {id:'ai-content',title:'小红书 · 内容运营自动化',en:'Content workflow · Automation',src:'portfolio_images/page_04.jpg',tag:'AI · Automation',category:'ai',url:'https://my.feishu.cn/base/ZaUdbFi6DaL9o4s1TeAcJaqzndh',description:'个人开发实践：将内容采集、整理、分析与运营流程连接起来，探索重复工作的自动化',descriptionEn:'A personal project connecting content collection, organization and analysis into an automated workflow'},
@@ -31,6 +32,11 @@ const aiProjects = [
   {id:'ai-space',title:'旧房改造 · AI 空间探索',en:'Home renovator · AI space exploration',src:'portfolio_images/page_07.jpg',tag:'AI · Spatial Design',category:'ai',url:'https://old-house-renovation-design1-0.vercel.app/',description:'个人产品原型：基于空间照片探索不同风格的改造方案与视觉表达',descriptionEn:'A personal prototype exploring renovation styles and visual possibilities from room photographs'}
 ];
 const appProjects = [
+  {"id": "pianoflow", "title": "Liræ PianoFlow · 动态曲谱", "en": "Liræ PianoFlow · Animated scores", "src": "assets/apps/pianoflow.svg", "category": "app", "tag": "Software · Music", "description": "把乐谱做成随演奏推进的动态画面", "descriptionEn": "Turn sheet music into visuals that follow a performance", "summary": "把乐谱做成随演奏推进的动态画面", "summaryEn": "Turn sheet music into visuals that follow a performance", "coverFit": "contain"},
+  {"id": "jingxue", "title": "经穴位索引", "en": "Acupoint Index", "src": "assets/apps/jingxue.webp", "category": "app", "tag": "App · Reference", "description": "按经络查找穴位", "descriptionEn": "Look up acupoints by meridian", "summary": "按经络查找穴位", "summaryEn": "Look up acupoints by meridian", "coverFit": "contain"},
+  {"id": "guiwei", "title": "归位", "en": "Guiwei", "src": "assets/apps/guiwei.webp", "category": "app", "tag": "App", "description": "归位 · 个人 App 项目", "descriptionEn": "Guiwei, a personal app project", "summary": "归位 · 个人 App 项目", "summaryEn": "Guiwei, a personal app project", "coverFit": "contain"},
+  {"id": "one-cup", "title": "一杯之间", "en": "One Cup Journal", "src": "assets/apps/one-cup.webp", "category": "app", "tag": "App · Journal", "description": "用手帐记录喝过的咖啡", "descriptionEn": "A journal for recording the coffee you drink", "summary": "用手帐记录喝过的咖啡", "summaryEn": "A journal for recording the coffee you drink", "coverFit": "contain", "url": "https://one-cup-journal.vercel.app/"},
+  {"id": "hangeul", "title": "韩语学习网站", "en": "Hangeul Start", "src": "assets/apps/hangeul.svg", "category": "app", "tag": "Web · Learning", "description": "个人开发的韩语学习网站", "descriptionEn": "A personal website for learning Korean", "summary": "个人开发的韩语学习网站", "summaryEn": "A personal website for learning Korean", "coverFit": "contain"},
   {id:'app-alarm',title:'Workday Alarm · 工作日闹钟',en:'Workday Alarm · Workday-aware alarms',src:'assets/apps/workday-alarm.webp',demoSrc:'assets/apps/workday-alarm-detail.webp',demoCaption:'功能说明图',demoCaptionEn:'Feature illustration',tag:'App · iOS',category:'app',background:'#edf4ee',summary:'法定节假日与调休，交给闹钟记住',summaryEn:'An alarm designed around holidays and adjusted workdays',description:'个人开发的工作日闹钟项目，围绕中国法定节假日与调休安排，管理工作日起床提醒图片为已有项目宣传图与功能说明图',descriptionEn:'A personal alarm app project designed around Chinese public holidays and adjusted workdays Images are existing project promotional and feature illustrations'},
   {id:'app-lingorole',title:'LingoRole · 跨语言通话助手',en:'LingoRole · Cross-language call assistant',src:'assets/apps/lingorole.webp',tag:'App · macOS · AI',category:'app',background:'#e8effa',summary:'实时理解对话，按角色准备英文回答',summaryEn:'Understand conversations and prepare role-aware English replies',description:'原生 macOS 跨语言通话助手原型，结合语音转写、翻译、角色背景与英文回答草稿，并提供语音播放当前图片为已有项目宣传图',descriptionEn:'A native macOS prototype combining speech transcription, translation, role context, English reply drafts and speech playback The image is an existing project promotional visual'},
   {id:'app-renovation',title:'Smart Renovation · 智能装修工作室',en:'Smart Renovation · Interior redesign app',src:'assets/apps/smart-renovation.webp',tag:'App · iOS / Android / Web',category:'app',background:'#f3eee4',summary:'上传房间照片，探索风格、改造约束与预算',summaryEn:'Explore renovation styles, practical constraints and budgets',description:'基于 React Native 与 Expo 的室内改造 App 原型，支持上传空间照片、选择装修风格、设置工程约束与预算估算，并接入 AI 图片服务会员与项目历史采用本地状态管理当前展示图为项目 App 图标',descriptionEn:'A React Native and Expo interior-redesign prototype with room photos, style selection, renovation constraints, budget estimates and an AI image-service integration Membership and project history currently use local state The image is the project app icon'},
@@ -38,7 +44,7 @@ const appProjects = [
   {id:'app-lirae',title:'Liræ · 无错琴 App',en:'Liræ · Guided musical expression',src:'assets/apps/lirae.webp',demoSrc:'assets/apps/lirae-stage.webp',demoCaption:'Stage 演奏界面',demoCaptionEn:'Stage performance interface',tag:'App · Music · MIDI',category:'app',background:'#efe9df',summary:'用简单输入推进旋律，让音乐表达更容易',summaryEn:'Simple inputs move the melody forward, making music more accessible',description:'基于 Expo 与 React Native 的无错琴软件 MVP支持屏幕按键、电脑键盘与 MIDI 输入，通过旋律推进、节奏保护、曲库与回放，探索更低门槛的音乐表达图片分别为 iOS 模拟器首页与 Stage 演奏界面',descriptionEn:'An Expo and React Native music MVP with on-screen, computer-keyboard and MIDI input, guided melodies, rhythm protection, a song library and playback Images show the iOS Simulator home screen and Stage interface'}
 ];
 const allProjects = [...archiveProjects, ...aiProjects, ...appProjects];
-const selectedIds = ['ai-flowpilot','ai-moss',...appProjects.map(p=>p.id),'archive-16','archive-18','ai-content','archive-10','archive-20'];
+const selectedIds = ['ai-flowpilot','ai-moss','airmouse',...appProjects.map(p=>p.id),'archive-16','archive-18','ai-content','archive-10','archive-20'];
 let language = 'zh';
 try { if (localStorage.getItem('william-language') === 'en') language = 'en'; } catch (_) {}
 let activeFilter = 'selected';
@@ -91,6 +97,8 @@ function fillProjectDialog(p) {
   document.querySelector('#dialog-title').textContent = t(p.title,p.en);
   document.querySelector('#dialog-tag').textContent = p.tag.toUpperCase();
   const image = document.querySelector('#dialog-image'); image.src = p.src; image.alt = t(p.title,p.en);
+  document.querySelector('#project-video')?.remove();
+  if(p.video){const video=document.createElement('video');video.id='project-video';video.controls=true;video.playsInline=true;video.preload='none';video.poster=p.src;video.src=p.video;video.style.cssText='display:block;width:100%;max-height:70vh';dialog.append(video);}
   const demo=document.querySelector('#dialog-demo');
   const demoImage=document.querySelector('#dialog-demo-image');
   demo.hidden=!p.demoSrc;
@@ -106,7 +114,7 @@ function openProject(p) {
   openedProject = p; fillProjectDialog(p); dialog.showModal(); document.body.classList.add('modal-open');
 }
 document.querySelector('#dialog-close').addEventListener('click',()=>dialog.close());
-dialog.addEventListener('close',()=>{document.body.classList.remove('modal-open');openedProject=null;});
+dialog.addEventListener('close',()=>{document.body.classList.remove('modal-open');openedProject=null;document.querySelector('#project-video')?.remove();});
 dialog.addEventListener('click',event=>{
   if(event.target !== dialog) return;
   const r=dialog.getBoundingClientRect();
