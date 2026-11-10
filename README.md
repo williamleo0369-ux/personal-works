@@ -2,15 +2,11 @@
 
 A cloud-themed personal portfolio inspired by the supplied video reference, using the supplied William character image. Static HTML, CSS and JavaScript; no build, tracker, remote font or runtime dependency.
 
-## Preview
+## 线上预览
 
-Run from this directory:
+[打开 William Lee · 李俊的个人作品集 ↗](https://williamleo0369-ux.github.io/personal-works/)
 
-```sh
-python3 -m http.server 4173
-```
-
-Open http://127.0.0.1:4173. `index.html` also works directly from disk.
+本地开发：下载仓库后，可在浏览器中直接打开 `index.html`
 
 ## Content and interaction
 
